@@ -1,0 +1,228 @@
+/* CSS Reset */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  input, button, textarea, select {
+    font: inherit;
+  }
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+
+
+/* CSS Global Variables */
+
+:root{
+/* Color Pallete */
+    --clr-primary-400: hsl(233, 47%, 7%);
+    --clr-primary-300: hsl(244, 38%, 16%);
+    
+    --clr-accent-400: hsl(277, 64%, 61%);
+
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-neutral-200: hsla(0, 0%, 100%, 0.75);
+    --clr-neutral-300: hsla(0, 0%, 100%, 0.6);
+
+/* Font Family */
+    --ff-heading: 'Inter', sans-serif;
+    --ff-body: 'Lexend', sans-serif;
+
+/* Font Size */
+    --fs-base: 15px;
+
+/* Font Weight */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+}
+
+/* Custom CSS Properties: Mobile */
+
+body{
+    background-color: var(--clr-primary-400);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: auto;
+    width: 100vw;
+}
+.card{
+    background-color: var(--clr-primary-300);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    border-radius: 1rem;
+    margin: 3em 1.5em;
+    
+    width: auto;
+    max-width: 400px;
+    height:auto;
+}
+
+.card__image {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    position: relative; /* Ensures the pseudo-element is positioned relative to the image container */
+}
+
+.card__image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--clr-accent-400);
+    opacity: 0.75; /* Adjust the opacity as needed */
+    z-index: 1; /* Ensure it appears above the image */
+    border-radius: 1em 1em 0 0; /* Matches the card's border-radius */
+}
+
+#card__img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative; /* Ensures the image is under the pseudo-element */
+    z-index: 0; /* Ensures the image is behind the pseudo-element */
+    border-radius: 1em 1em 0 0;
+}
+
+.card__content{
+    padding: 2em;
+    
+    text-align: center;
+}
+.card__content h1{
+    
+    font-family: var(--ff-heading);
+    font-weight: var(--fw-bold);
+    color: var(--clr-neutral-100);
+
+    font-size: 1.5rem;
+    
+}
+
+.card__content span{
+    color: var(--clr-accent-400);
+
+}
+
+.card__content p{
+    font-family: var(--ff-body);
+    font-weight: var(--fw-regular);
+    color: var(--clr-neutral-200);
+
+    font-size: 1rem;
+    
+    margin: 1em 0;
+}
+
+.card__stats{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+    
+    width: 100%;
+    height: 100%;
+
+    padding-top: 2em;
+}
+
+.card__stats-item{
+    display: grid;
+    place-content: center;
+    gap: 1em;
+
+    text-align: center;
+}
+
+.card__stats-item #number{
+    font-family: var(--ff-heading);
+    font-weight: var(--fw-bold);
+    color: var(--clr-neutral-100);
+    
+    margin: 0;
+    line-height: 0;
+
+    font-size: 1.2rem;
+}
+.card__stats-item #text{
+    font-family: var(--ff-body);
+    font-weight: var(--fw-regular);
+    color: var(--clr-neutral-300);
+
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    
+    line-height: 0;
+}
+@media (min-width: 600px)
+{
+    body{
+        height: 100vh;
+        width: 100vw;
+    }
+    .card{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+        max-width: 1000px;
+        border-radius: 0.5rem 0 0 0.5rem;
+        margin:auto auto;
+    }
+    .card__image{
+        width: 100%;
+        height: auto;
+    }
+    .card__image::before {
+        border-radius: 0 0.5rem 0.5rem 0;
+    }  
+    #card__img {
+        border-radius: 0 0.5rem 0.5rem 0;
+    }
+    .card__content{
+        padding: 3em;
+        
+        text-align: left;
+    }
+    .card__content p{
+        margin: 2em 0;
+    }
+    .card__stats{
+        justify-content: left;
+        flex-direction: row;
+        gap: 3em;
+    
+        padding-top: 3em;
+    }
+    .card__stats-item{
+        display: grid;
+        place-content: left;
+        gap: 0em;
+    
+        text-align: left;
+    }
+    .card__image{ order: 2; }
+    .card__content{ order: 1; }
+    
+}
